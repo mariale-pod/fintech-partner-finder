@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fintech Partner Finder — Find fintechs to partner with, by problem and market</title>
+<meta name="description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size — 108 companies across 20 markets and 28 specific problems, sourced from public information.">
+<meta name="author" content="Maria Ale. Peralta Giraldo">
+<meta name="robots" content="index, follow">
+
+<!-- Open Graph / LinkedIn preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Fintech Partner Finder — Find fintechs to partner with, by problem and market">
+<meta property="og:description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size — 108 companies across 20 markets and 28 specific problems.">
+<!-- og:url and og:image: add once hosted at a live URL, e.g.:
+<meta property="og:url" content="https://yourdomain.com/">
+<meta property="og:image" content="https://yourdomain.com/maria-headshot.jpg">
+(maria-headshot.jpg is already in this folder and used as the author avatar; a wider 1200x630 banner would preview better on LinkedIn than the square headshot, but the headshot works as a placeholder.)
+-->
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fintech Partner Finder">
+<meta name="twitter:description" content="Find fintech partners by problem, market, and company size — 108 companies, 20 markets, 28 specific problems.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234b3bd6'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  :root{
+    --bg:#fafafa; --card:#ffffff; --border:#e6e6ea; --text:#111114; --text2:#5c5c66; --muted:#96969f;
+    --navy:#4b3bd6; --navy-bg:#ecebff; --accent:#4b3bd6;
+    --nimble-bg:#e6f4ea; --nimble-fg:#1e6b3a;
+    --established-bg:#eceef3; --established-fg:#3b4560;
+  }
+  html[data-theme="dark"]{
+    --bg:#0e0e12; --card:#18181f; --border:#2b2b35; --text:#f2f2f5; --text2:#b3b3bf; --muted:#6f6f7a;
+    --navy:#a89bff; --navy-bg:#231f45; --accent:#a89bff;
+    --nimble-bg:#12301f; --nimble-fg:#6fd695;
+    --established-bg:#242536; --established-fg:#aeb7cc;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .2s ease, color .2s ease;}
+  .hero{background:var(--card); border-bottom:1px solid var(--border); padding:2.25rem 1.5rem 2rem; position:relative;}
+  .hero-inner{max-width:960px; margin:0 auto; position:relative;}
+  .theme-toggle{position:absolute; top:0; right:1.5rem; background:var(--bg); border:1px solid var(--border); color:var(--text); width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:17px; transition:background .12s ease;}
+  .theme-toggle:hover{border-color:var(--navy);}
+  .brand-row{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .brand-mark{width:42px; height:42px; border-radius:12px; background:var(--navy-bg); color:var(--navy); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;}
+  .hero h1{font-size:26px; font-weight:600; margin:0; letter-spacing:-.01em; color:var(--text);}
+  .hero p{font-size:15px; color:var(--text2); margin:0 0 18px; max-width:60ch;}
+  .stats-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
+  .stat-chip{display:inline-flex; align-items:center; gap:7px; background:var(--bg); border:1px solid var(--border); color:var(--text2); padding:8px 15px; border-radius:20px; font-size:13px;}
+  .stat-chip i{font-size:15px; color:var(--navy);}
+  .stat-chip strong{font-size:15px; color:var(--text);}
+  .coverage-note{font-size:12.5px; color:var(--muted);}
+  .wrap{max-width:960px; margin:0 auto; padding:1.75rem 1.5rem 4rem;}
+  .author-box{display:flex; align-items:center; flex-wrap:wrap; gap:8px; font-size:12.5px; color:var(--text2); background:var(--navy-bg); border:1px solid var(--border); border-radius:10px; padding:10px 16px; margin-bottom:1.4rem;}
+  .author-box i{font-size:15px; color:var(--navy); flex-shrink:0;}
+  .author-avatar{width:32px; height:32px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1.5px solid var(--card);}
+  .author-box strong{color:var(--text); font-weight:600;}
+  .author-sep{color:var(--muted);}
+  .author-disclaimer{color:var(--text2);}
+  .markets-hint{font-size:12px; color:var(--muted); margin:0 0 14px;}
+  .panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(20,48,79,.04);}
+  .panel h2{font-size:13px; font-weight:700; margin:0 0 10px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy);}
+  .panel p{font-size:14px; color:var(--text2); margin:0 0 10px;}
+  .panel p:last-child{margin-bottom:0;}
+  label.field-label{font-size:13px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:6px; margin-bottom:9px;}
+  .pillrow{display:flex; gap:7px; flex-wrap:wrap;}
+  .pill{font-size:13px; font-weight:500; padding:8px 14px; border-radius:20px; border:1px solid var(--border); background:var(--card); cursor:pointer; color:var(--text); transition:all .12s ease; display:inline-flex; align-items:center; gap:6px;}
+  .pill i{font-size:15px;}
+  .pill:hover{border-color:var(--accent); transform:translateY(-1px);}
+  .filters{display:flex; flex-direction:column; gap:20px; margin-bottom:1.8rem;}
+  .problem-group{border:1px solid var(--border); border-radius:10px; margin-bottom:8px; overflow:hidden;}
+  .problem-group:last-child{margin-bottom:0;}
+  .problem-group-header{width:100%; display:flex; align-items:center; gap:8px; padding:10px 14px; background:var(--card); border:none; cursor:pointer; font-family:inherit; text-align:left; color:var(--text);}
+  .problem-group-header:hover{background:var(--bg);}
+  .problem-group-header .glabel{font-size:13px; font-weight:600; flex:1;}
+  .problem-group-header .gcount{font-size:11px; font-weight:700; color:var(--navy); background:var(--navy-bg); padding:2px 8px; border-radius:10px;}
+  .problem-group-header .chevron{font-size:16px; color:var(--muted); transition:transform .15s ease;}
+  .problem-group.expanded .chevron{transform:rotate(180deg);}
+  .problem-group-body{padding:12px 14px 14px; border-top:1px solid var(--border);}
+  .filter-grid{display:grid; grid-template-columns:1fr; gap:20px;}
+  @media(min-width:640px){ .filter-grid.two{grid-template-columns:1fr 1fr;} }
+
+  .markets-panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(20,48,79,.04);}
+  .region-block{margin-bottom:16px;}
+  .region-block:last-child{margin-bottom:0;}
+  .region-title{font-size:12px; font-weight:700; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; gap:6px;}
+  .country-grid{display:flex; gap:8px; flex-wrap:wrap;}
+  .country-tile{padding:11px 16px; border-radius:10px; border:1px solid var(--border); background:var(--bg); color:var(--text); cursor:pointer; text-align:left; min-width:150px; transition:all .12s ease; font-family:inherit;}
+  .country-tile:hover{border-color:var(--accent);}
+  .country-tile .name{font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
+  .country-tile .count{font-size:11.5px; color:var(--muted); margin-top:3px;}
+  .country-tile.active{border-color:var(--accent); background:var(--navy-bg);}
+  .country-tile.active .name{color:var(--accent);}
+
+  .selected-info{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--text2); margin:0 0 1rem;}
+  .selected-info strong{color:var(--text); font-size:15px;}
+  .selected-info .tier-mini{font-size:11.5px; color:var(--muted);}
+
+  .cards{display:grid; grid-template-columns:1fr; gap:12px;}
+  @media(min-width:640px){ .cards{grid-template-columns:1fr 1fr;} }
+  .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 2px rgba(20,48,79,.04);}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:8px;}
+  .card-name{font-size:15.5px; font-weight:700;}
+  .tags{display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px;}
+  .badge{font-size:11px; font-weight:600; padding:3px 10px 3px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:4px; white-space:nowrap;}
+  .badge i{font-size:12px;}
+  .tier-badge{font-size:10.5px; font-weight:700; padding:3px 9px 3px 7px; border-radius:6px; text-transform:uppercase; letter-spacing:.03em; display:inline-flex; align-items:center; gap:4px;}
+  .visa-badge{font-size:10.5px; font-weight:600; padding:2px 8px 2px 6px; border-radius:6px; display:inline-flex; align-items:center; gap:4px; border:1px solid var(--border); color:var(--text2); background:transparent;}
+  .card-scope{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; white-space:nowrap; padding-top:2px; display:flex; align-items:center; gap:4px;}
+  .card-blurb{font-size:13.5px; color:var(--text2); margin:8px 0;}
+  .card-source a{font-size:12px; color:var(--accent); text-decoration:none; font-weight:600;}
+  .card-source a:hover{text-decoration:underline;}
+  .empty{font-size:13.5px; color:var(--muted); text-align:center; padding:1rem 0;}
+  footer{margin-top:2.5rem; border-top:1px solid var(--border); padding-top:1.25rem; font-size:12.5px; color:var(--muted);}
+  footer p{margin:0 0 8px;}
+  .feedback-btn{display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:600; color:var(--navy); background:var(--navy-bg); border:1px solid var(--border); padding:8px 15px; border-radius:20px; text-decoration:none; margin-top:4px;}
+  .feedback-btn:hover{border-color:var(--navy);}
+  .feedback-btn i{font-size:15px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="ti ti-moon"></i></button>
+  <div class="hero-inner">
+    <div class="brand-row">
+      <div class="brand-mark"><i class="ti ti-compass"></i></div>
+      <h1>Fintech partner finder</h1>
+    </div>
+    <p>A discovery tool for finding fintechs to partner with, organized by the specific problem to solve, partner type, and market — covering both nimble players and established, large-scale ones.</p>
+    <div class="stats-row">
+      <span class="stat-chip"><i class="ti ti-building-store"></i><strong>108</strong>&nbsp;fintechs</span>
+      <span class="stat-chip"><i class="ti ti-world"></i><strong>20</strong>&nbsp;markets</span>
+      <span class="stat-chip"><i class="ti ti-list-details"></i><strong>28</strong>&nbsp;specific problems</span>
+    </div>
+    <span class="coverage-note">Covers all 20 target markets — depth per market will keep growing. Last updated July 25, 2026.</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="author-box">
+    <img src="maria-headshot.jpg" class="author-avatar" alt="Maria Ale. Peralta Giraldo">
+    <span><strong>Concept and curation:</strong> Maria Ale. Peralta Giraldo <a href="https://www.linkedin.com/in/mariaperalta/" target="_blank" rel="noopener" style="color:var(--navy); font-weight:600; text-decoration:none;">LinkedIn <i class="ti ti-external-link" style="font-size:11px;"></i></a></span>
+    <span class="author-sep">&middot;</span>
+    <span class="author-disclaimer">I work at Visa. This is independent personal research, done in a personal capacity and not on Visa's behalf &mdash; it doesn't represent Visa's views, and inclusion of any company doesn't imply endorsement, affiliation, or paid promotion. "Visa Partner Directory" badges are sourced from <a href="https://partner.visa.com/site/partner-directory.html" target="_blank" rel="noopener" style="color:var(--navy); font-weight:600; text-decoration:none;">Visa's public partner directory webpage</a>, nothing internal.</span>
+  </div>
+
+  <div class="panel">
+    <h2>Methodology</h2>
+    <p><strong>Problems</strong> are framed as specific jobs to be done (e.g. "accept in-person payments" rather than just "payments"), grouped under 7 broader categories so browsing stays manageable: payments and acquiring, banking-as-a-service, lending and credit, cross-border money movement, wealth and investing, insurtech, and personal finance.</p>
+    <p><strong>Company size</strong> is shown as a badge, not a filter default: <strong>nimble</strong> means privately held, generally founded within the last ~15 years, and either an estimated valuation under roughly $2 billion or a headcount under roughly 1,500 where valuation isn't public. <strong>Established</strong> means it exceeds one of those, is publicly listed, or is a widely recognized market leader in its category. This is directional judgment against available public data, not a precise financial threshold.</p>
+    <p><strong>Partner scope:</strong> local (one primary market), regional (a handful of neighboring markets), global (broad multi-region presence). Selecting more than one problem shows only fintechs that address all of the selected problems together, not just any one of them.</p>
+  </div>
+
+  <div class="filters">
+    <div>
+      <label class="field-label"><i class="ti ti-target-arrow"></i> What problems are you solving? <span id="probCount" style="font-weight:400; color:var(--muted);">(0/3)</span></label>
+      <div id="problems"></div>
+    </div>
+    <div class="filter-grid two">
+      <div>
+        <label class="field-label"><i class="ti ti-handshake"></i> What kind of partner do you need?</label>
+        <div class="pillrow" id="scope"></div>
+      </div>
+      <div>
+        <label class="field-label"><i class="ti ti-building-store"></i> Company size</label>
+        <div class="pillrow" id="tier"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="markets-panel">
+    <label class="field-label" style="margin-bottom:6px;"><i class="ti ti-building-store"></i> Markets</label>
+    <p class="markets-hint">Select a market below to display its matching fintechs.</p>
+    <div id="regions"></div>
+  </div>
+
+  <div id="selectedInfo" class="selected-info"></div>
+  <div class="cards" id="cards"></div>
+
+  <footer>
+    <p><strong>Disclaimer:</strong> The author works at Visa. This tool is independent personal research, produced in a personal capacity and not on Visa's behalf, compiled from public information for discovery purposes only; it does not represent Visa's views or positions. Inclusion of any company &mdash; nimble or established, Visa partner or otherwise &mdash; does not represent an endorsement, affiliation, partnership, or paid promotion, and its absence does not imply the opposite. Where a company appears in <a href="https://partner.visa.com/site/partner-directory.html" target="_blank" rel="noopener">Visa's public partner directory webpage</a>, that is noted on its card as "Visa Partner Directory" &mdash; sourced entirely from that public page, not from any internal or non-public information; all other information is drawn from independent public sources. Fintech companies change stage, ownership, and valuation quickly &mdash; verify current status directly with the company before engaging. Coverage spans all 20 target markets at varying depth (2&ndash;11 fintechs each), with more companies and problem areas to be added over time.</p>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+      <a class="feedback-btn" href="mailto:marialejandraperalta@gmail.com?subject=Fintech%20finder%20-%20suggested%20correction&amp;body=Fintech%20name%3A%0D%0A%0D%0ASuggested%20correction%20or%20addition%3A%0D%0A%0D%0ASource%20%28link%29%3A%0D%0A"><i class="ti ti-mail"></i>Suggest a correction by email</a>
+      <a class="feedback-btn" href="https://www.linkedin.com/in/mariaperalta/" target="_blank" rel="noopener"><i class="ti ti-brand-linkedin"></i>Suggest a correction on LinkedIn</a>
+    </div>
+    <p style="margin-top:8px; font-size:11.5px;">The LinkedIn link opens the profile so you can send a message directly &mdash; LinkedIn doesn't support pre-filled messages from outside sites. Suggestions are reviewed against independent public sources before being added, not published automatically.</p>
+  </footer>
+
+</div>
+
+<script>
+const CATEGORIES = [
+  {id:"payments", label:"Payments and acquiring", icon:"ti-credit-card", bg:"#E6F1FB", fg:"#0C447C", subs:[
+    {id:"checkout", label:"Accept online payments (hosted checkout page)"},
+    {id:"local_wallets", label:"Accept popular local wallets and QR payments"},
+    {id:"orchestration", label:"Connect multiple payment methods"},
+    {id:"tap_to_phone", label:"Accept in-person payments (tap to phone)"},
+    {id:"fraud", label:"Detect and prevent payment fraud"},
+    {id:"b2b_collections", label:"Collect and reconcile B2B payments"},
+    {id:"spend_mgmt", label:"Control corporate card spend"},
+    {id:"tokenization", label:"Tokenize stored card data"}
+  ]},
+  {id:"baas", label:"Banking-as-a-service", icon:"ti-building-bank", bg:"#E1F5EE", fg:"#085041", subs:[
+    {id:"launch_bank", label:"Launch a banking app"},
+    {id:"embed_banking", label:"Embed banking into an existing product"},
+    {id:"issue_cards", label:"Issue cards for your product"},
+    {id:"open_banking", label:"Connect to bank accounts (open banking)"},
+    {id:"kyc_kyb", label:"Verify customer or business identity (KYC/KYB)"}
+  ]},
+  {id:"lending", label:"Lending and credit", icon:"ti-cash", bg:"#FAEEDA", fg:"#633806", subs:[
+    {id:"bnpl", label:"Offer buy-now-pay-later at checkout"},
+    {id:"sme_loans", label:"Provide SME or working-capital loans"},
+    {id:"embedded_credit", label:"Embed consumer credit into a product"},
+    {id:"underwriting", label:"Automate credit scoring and underwriting"}
+  ]},
+  {id:"crossborder", label:"Cross-border money movement", icon:"ti-arrows-exchange", bg:"#F1EFE8", fg:"#444441", subs:[
+    {id:"remittances", label:"Send international remittances"},
+    {id:"payouts", label:"Pay out to multiple countries"},
+    {id:"collection", label:"Collect payments in local currency internationally"},
+    {id:"fx", label:"Manage FX conversion"}
+  ]},
+  {id:"wealth", label:"Wealth and investing", icon:"ti-chart-line", bg:"#EEEDFE", fg:"#3C3489", subs:[
+    {id:"investing", label:"Offer investing or trading to customers"},
+    {id:"robo", label:"Automate portfolio management"},
+    {id:"crypto", label:"Crypto on/off-ramp"}
+  ]},
+  {id:"insurtech", label:"InsurTech", icon:"ti-shield-check", bg:"#FBEAF0", fg:"#72243E", subs:[
+    {id:"standalone_insurance", label:"Offer standalone digital insurance"},
+    {id:"claims", label:"Automate claims"}
+  ]},
+  {id:"pfm", label:"Personal finance", icon:"ti-wallet", bg:"#EAF3DE", fg:"#27500A", subs:[
+    {id:"budgeting", label:"Budgeting and spend tracking"},
+    {id:"wellness", label:"Financial wellness tools"}
+  ]}
+];
+
+const REGION_OF = {
+  "United States":"Americas", "Colombia":"Americas", "Brazil":"Americas", "Mexico":"Americas",
+  "United Kingdom":"Europe", "Germany":"Europe", "France":"Europe", "Spain":"Europe", "Netherlands":"Europe",
+  "Nigeria":"Africa",
+  "Saudi Arabia":"Middle East",
+  "India":"Asia-Pacific", "Singapore":"Asia-Pacific", "Vietnam":"Asia-Pacific", "China":"Asia-Pacific",
+  "Japan":"Asia-Pacific", "Indonesia":"Asia-Pacific", "Philippines":"Asia-Pacific", "Malaysia":"Asia-Pacific", "Thailand":"Asia-Pacific"
+};
+const REGION_ORDER = ["Americas","Europe","Middle East","Africa","Asia-Pacific"];
+
+const DATA = [
+  {name:"KinPOS", country:"United States", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Miami-based omnichannel payment software provider whose TES module offers cloud tokenization for banks and correspondent banking services, with a strong custom POS presence across Latin America.", source:"https://kinpos.com/us/en/__trashed-3/"},
+  {name:"Entrust", country:"United States", subs:["tokenization","kyc_kyb"], visaPartner:true, tier:"established", scope:"global", blurb:"Digital card and payment tokenization platform certified across Visa VTS and Mastercard MDES, securing card-on-file and Click to Pay checkout; acquired AI-powered identity verification leader Onfido in 2024, and was named a Leader in Gartner's inaugural Magic Quadrant for Identity Verification.", source:"https://www.businesswire.com/news/home/20240409800662/en/Entrust-Completes-Acquisition-of-Onfido-Creating-A-New-Era-of-Identity-Centric-Security"},
+  {name:"Method", country:"United States", subs:["underwriting"], tier:"nimble", scope:"regional", blurb:"API giving lenders and fintechs real-time access to consumer liability data for debt repayment and balance transfers. Austin-based, founded 2021, raised a $41.5M Series B in January 2025.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Lithic", country:"United States", subs:["issue_cards"], tier:"nimble", scope:"regional", blurb:"Card-issuing APIs that let companies launch and manage their own card programs.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Upflow", country:"United States", subs:["b2b_collections"], tier:"nimble", scope:"regional", blurb:"B2B accounts-receivable and cash-collection software for finance teams.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Mercury", country:"United States", subs:["open_banking"], tier:"established", scope:"local", blurb:"Business banking platform reshaping how startups and small businesses handle money.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Ramp", country:"United States", subs:["spend_mgmt"], tier:"established", scope:"local", blurb:"Corporate cards and spend-management platform for growing businesses.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Kalshi", country:"United States", subs:["investing"], tier:"established", scope:"local", blurb:"Federally regulated prediction market exchange; raised $1B in its Series E.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Alloy", country:"United States", subs:["fraud","kyc_kyb"], tier:"nimble", scope:"regional", blurb:"Identity decisioning platform used by banks and fintechs to automate KYC, KYB, AML, and fraud screening at onboarding and throughout the customer lifecycle, orchestrating 250+ identity data sources through one integration.", source:"https://www.alloy.com/onboarding"},
+  {name:"Avallon", country:"United States", subs:["claims"], tier:"nimble", scope:"local", blurb:"AI agents that automate insurance claims operations for payers; raised $4.6M, New York-based.", source:"https://www.businesswire.com/news/home/20251106838494/en/Avallon-Secures-$4.6-Million-Scales-AI-Agents-to-Automate-Insurance-Claims-Operations"},
+  {name:"OpenFX", country:"United States", subs:["fx"], tier:"nimble", scope:"global", blurb:"API infrastructure for global FX liquidity and cross-border settlement; $94M Series A led by Accel.", source:"https://www.openfx.com/blog/announcing-openfx-s-94m-series-a"},
+
+  {name:"Addi", country:"Colombia", subs:["bnpl"], tier:"nimble", scope:"regional", blurb:"Buy-now-pay-later financing for retail and e-commerce, operating in Colombia and Brazil.", source:"https://thefintechtimes.com/the-fintech-landscape-of-colombia-in-2026/"},
+  {name:"Platam", country:"Colombia", subs:["sme_loans"], tier:"nimble", scope:"local", blurb:"SME financing platform growing its loan portfolio roughly 400% a year, targeting $100M managed by 2028.", source:"https://thefintechtimes.com/the-fintech-landscape-of-colombia-in-2026/"},
+  {name:"Yuno", country:"Colombia", subs:["orchestration","checkout"], tier:"nimble", scope:"global", blurb:"Payment orchestration platform serving enterprise clients (McDonald's, Rappi, Avianca, inDrive) across roughly 40 countries. Founded 2022 in Bogota, $25M Series A at a $150M valuation.", source:"https://www.fintechfutures.com/fintech/colombia-s-yuno-plots-expansion-following-25m-series-a-round"},
+  {name:"Nequi", country:"Colombia", subs:["open_banking"], tier:"established", scope:"local", blurb:"Digital financial platform (part of Bancolombia) built for younger and underserved users, covering payments, savings, and disbursements.", source:"https://thefintechtimes.com/the-fintech-landscape-of-colombia-in-2026/"},
+  {name:"NovoPayment", country:"Colombia", subs:["issue_cards"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Banking-as-a-service platform (Miami-headquartered, Latin-founded) delivering digital banking, payment infrastructure, and card-issuing APIs across the Americas; about 85% of its clients are in Latin America.", source:"https://techcrunch.com/2022/04/19/fintech-novopayment-raises-first-venture-round-in-15-years-to-expand-its-global-full-stack-baas-platform"},
+  {name:"CUB3PAY", country:"Colombia", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Visa-certified Token Service Provider offering EMV-compliant tokenization for Click to Pay and card-on-file across Chile, Colombia, and Mexico.", source:"https://www.cub3pay.com/customers-and-partners/"},
+  {name:"RappiPay", country:"Colombia", subs:["local_wallets"], tier:"established", scope:"local", blurb:"Financial services embedded within the Rappi super-app ecosystem.", source:"https://thefintechtimes.com/the-fintech-landscape-of-colombia-in-2026/"},
+
+  {name:"FitBank", country:"Brazil", subs:["embed_banking"], tier:"nimble", scope:"regional", blurb:"Banking-as-a-service and payment-system infrastructure for platforms building embedded financial products.", source:"https://www.analyticsinsight.net/fintech/top-7-fintech-startups-in-brazil-to-watch-in-2026"},
+  {name:"180 Seguros", country:"Brazil", subs:["standalone_insurance"], tier:"nimble", scope:"local", blurb:"Digital insurance provider; raised a $31.4M Series A, one of the largest insurtech rounds in Brazil at the time.", source:"https://fintech.global/2022/02/03/180-seguros-raises-biggest-insurtech-series-a-in-brazil/"},
+  {name:"Capim", country:"Brazil", subs:["embedded_credit"], tier:"nimble", scope:"local", blurb:"Financing for dental treatments at rates well below traditional bank loans; $26.7M Series A led by Valor Capital and QED Investors.", source:"https://reports.cuanticovp.com/cuantico-vp-identifies-brazils-top-startups-to-watch-for-2026/"},
+  {name:"Nubank", country:"Brazil", subs:["budgeting"], tier:"established", scope:"regional", blurb:"World's largest digital bank outside Asia by customer count; publicly listed with a market cap of roughly $77-85B.", source:"https://www.analyticsinsight.net/fintech/top-7-fintech-startups-in-brazil-to-watch-in-2026"},
+  {name:"Pomelo", country:"Brazil", subs:["issue_cards"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Card-issuing-as-a-service platform for fintechs and embedded-finance players across Latin America, with Brazil as its largest market; raised a $55M Series C in 2024 (Kaszek, Insight Partners) on top of $160M total funding.", source:"https://techcrunch.com/2024/01/17/pomelo-stacks-40m-to-scale-its-payments-infra-business-in-latam/"},
+  {name:"Dock", country:"Brazil", subs:["issue_cards"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Card-issuing and banking-as-a-service platform powering 38 million active accounts and 3 billion+ annual transactions for banks, retailers, and fintechs across Latin America; reached a $1.5B valuation in 2022.", source:"https://www.fintechfutures.com/2022/05/brazilian-fintech-dock-lands-110m-growth-funding-at-1-5bn-valuation/"},
+  {name:"Stone", country:"Brazil", subs:["tap_to_phone"], tier:"established", scope:"local", blurb:"Publicly listed (Nasdaq: STNE) payments processor focused on small and medium enterprises; Pix transaction volume grew 64% year-over-year.", source:"https://www.analyticsinsight.net/fintech/top-7-fintech-startups-in-brazil-to-watch-in-2026"},
+
+  {name:"Sumsub", country:"United Kingdom", subs:["kyc_kyb"], tier:"established", scope:"global", blurb:"London-based full-cycle identity verification platform combining KYC, KYB, transaction monitoring, and AML screening in one integration, used across 220+ countries by over 2,000 clients including Bitpanda, Wirex, and Bybit.", source:"https://sumsub.com/newsroom/sumsub-introduces-a-full-cycle-verification-platform-stirring-the-borders-of-kyc-kyb-aml-and-anti-fraud/"},
+  {name:"Marqeta", country:"United Kingdom", subs:["issue_cards"], visaPartner:true, tier:"established", scope:"global", blurb:"Publicly listed (Nasdaq: MQ) card-issuing platform; acquired UK-regulated e-money institution TransactPay in 2025 to strengthen card programme management across the UK and EU.", source:"https://www.businesswire.com/news/home/20250806467953/en/Marqeta-Announces-Completion-of-TransactPay-Acquisition"},
+  {name:"Thredd", country:"United Kingdom", subs:["issue_cards"], visaPartner:true, tier:"established", scope:"global", blurb:"London-based card processing platform (rebranded from Global Processing Services in 2023) powering issuing and program management for 100+ customers across 44 countries, spanning digital banking, BNPL, travel, and BaaS.", source:"https://www.thredd.com/about-us/newsroom/company-news/company-update"},
+  {name:"Unlimit", country:"United Kingdom", subs:["tokenization"], visaPartner:true, tier:"established", scope:"global", blurb:"Global payments infrastructure provider (formerly Cardpay), offering acceptance, payouts, banking, and card issuing through one API; 700 employees across 16 offices on five continents.", source:"https://www.unlimit.com/en-gb/"},
+  {name:"Tymit", country:"United Kingdom", subs:["bnpl"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"London-based instalment-credit fintech offering white-labelled buy-now-pay-later programmes for banks and merchants (including Frasers Group); FCA and PSR authorised, and a Visa partner since 2023.", source:"https://www.eu-startups.com/2023/07/london-based-fintech-tymit-becomes-a-visa-partner-to-spread-its-white-labelled-instalment-credit-solutions/"},
+  {name:"Yapily", country:"United Kingdom", subs:["open_banking"], tier:"nimble", scope:"regional", blurb:"Open banking API infrastructure operating at European scale.", source:"https://www.omnius.so/blog/leading-uk-fintech-startups"},
+  {name:"Sidekick", country:"United Kingdom", subs:["robo"], tier:"nimble", scope:"local", blurb:"Wealthtech platform widening access to investing tools traditionally reserved for private banking clients; £7.8M Series A, February 2026.", source:"https://fintech.global/2026/02/05/uk-wealthtech-sidekick-secures-7-8m-in-series-a/"},
+  {name:"TrueLayer", country:"United Kingdom", subs:["open_banking"], tier:"nimble", scope:"regional", blurb:"Open banking payment infrastructure used by companies building embedded finance products across Europe.", source:"https://www.omnius.so/blog/leading-uk-fintech-startups"},
+  {name:"Marshmallow", country:"United Kingdom", subs:["standalone_insurance"], tier:"nimble", scope:"local", blurb:"Digital insurer; raised a $90M Series C led by Portage Capital and BlackRock in April 2025, valuing the company at over $2B.", source:"https://www.ellty.com/investors/london-insurtech-investors"},
+  {name:"Revolut", country:"United Kingdom", subs:["open_banking","crypto"], tier:"established", scope:"global", blurb:"Global neobank offering multi-currency accounts, cards, and trading; one of Europe's most prominent fintechs.", source:"https://www.omnius.so/blog/leading-uk-fintech-startups"},
+  {name:"Wise", country:"United Kingdom", subs:["fx","remittances"], tier:"established", scope:"global", blurb:"Publicly listed (LSE) global money-transfer service enabling low-cost international transfers.", source:"https://www.omnius.so/blog/leading-uk-fintech-startups"},
+
+  {name:"Switchio", country:"Nigeria", subs:["checkout"], visaPartner:true, tier:"nimble", scope:"global", blurb:"Modular payment gateway and orchestration platform (Czechia-founded, Visa and Mastercard certified) giving merchants PCI DSS-compliant checkout and multi-acquirer routing; operating footprint includes Nigeria.", source:"https://switchio.com/payment-gateway/"},
+  {name:"Kora", country:"Nigeria", subs:["kyc_kyb"], tier:"nimble", scope:"regional", blurb:"Lagos-based pan-African payment infrastructure company whose Identity APIs let businesses verify government-issued ID (BVN in Nigeria, plus South African, Kenyan, and Ghanaian documents) to build KYC and KYB onboarding flows.", source:"https://www.korahq.com/identity"},
+  {name:"LemFi", country:"Nigeria", subs:["remittances"], tier:"nimble", scope:"global", blurb:"Cross-border remittance app processing over $1B a month; $53M Series B in January 2025. Rooted in Nigeria with users also in Canada, the UK, and the US.", source:"https://techpoint.africa/guide/best-fintech-companies-in-nigeria/"},
+  {name:"Moniepoint", country:"Nigeria", subs:["launch_bank"], tier:"nimble", scope:"regional", blurb:"Agency banking and payments infrastructure; reached unicorn status in 2024, valued at $1B, and is already profitable.", source:"https://fintechnews.africa/45942/fintech-nigeria/moniepoint-nigeria-unicorn/"},
+  {name:"Flutterwave", country:"Nigeria", subs:["orchestration","payouts"], tier:"established", scope:"regional", blurb:"Nigeria's most valuable fintech at $3B, processing over $50B in transactions across 36 countries since 2016.", source:"https://techpoint.africa/guide/best-fintech-companies-in-nigeria/"},
+  {name:"Mintpoint", country:"Nigeria", subs:["tap_to_phone"], tier:"nimble", scope:"local", blurb:"SoftPOS network turning smartphones into card terminals for Nigerian merchants; powered by Africard, with over 10,000 merchants onboarded.", source:"https://mintpoint.app/about"},
+
+  {name:"Lendingkart", country:"India", subs:["sme_loans"], tier:"nimble", scope:"local", blurb:"SME lending platform using its own credit-scoring model, active across thousands of Indian cities.", source:"https://www.mymudra.com/blog/top-10-fintech-companies-in-india"},
+  {name:"Axio", country:"India", subs:["bnpl"], tier:"nimble", scope:"local", blurb:"Consumer BNPL and lending platform; received a $20M investment from Amazon's Smbhv Venture Fund.", source:"https://inc42.com/lists/top-30-funded-fintech-startups-in-india-2026/"},
+  {name:"Easebuzz", country:"India", subs:["checkout"], tier:"nimble", scope:"local", blurb:"Payment gateway and collection APIs for Indian businesses; $30M round led by Bessemer Venture Partners.", source:"https://inc42.com/lists/top-30-funded-fintech-startups-in-india-2026/"},
+  {name:"Xflow", country:"India", subs:["collection"], tier:"nimble", scope:"local", blurb:"Cross-border payment collection for Indian exporters and service businesses; RBI-approved and expanding its international network.", source:"https://www.xflowpay.com/blog/cross-border-payments-companies"},
+  {name:"Paytm", country:"India", subs:["local_wallets","bnpl"], tier:"established", scope:"local", blurb:"India's largest listed digital payments platform, spanning payments, lending, and wealth products.", source:"https://inc42.com/lists/top-30-funded-fintech-startups-in-india-2026/"},
+  {name:"PolicyBazaar", country:"India", subs:["standalone_insurance"], tier:"established", scope:"local", blurb:"India's leading publicly listed insurance marketplace, using AI to personalize coverage recommendations.", source:"https://inc42.com/lists/top-30-funded-fintech-startups-in-india-2026/"},
+  {name:"Wondersoft", country:"India", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"local", blurb:"Chennai-based retail and payments software provider offering Visa Ready tokenization services (Token Service Provider) alongside POS solutions for 14,000+ independent retailers and 200+ retail chains.", source:"https://partner.visa.com/site/partner-directory/wondersoft.html"},
+  {name:"Mintoak", country:"India", subs:["orchestration"], visaPartner:true, tier:"nimble", scope:"global", blurb:"Merchant commerce SaaS platform helping banks and acquirers (HDFC Bank, State Bank of India, Axis Bank, and others across 20+ countries) move beyond transaction processing into omnichannel card-present and card-not-present acceptance plus merchant engagement tools; partnered with Visa in 2026 to expand across Asia Pacific.", source:"https://www.visa.com.sg/about-visa/newsroom/press-releases/visa-and-mintoak-join-forces-to-bring-merchant-saas-capabilities-to-acquirers-across-asia-pacific.html"},
+  {name:"Wibmo", country:"India", subs:["fraud"], tier:"established", scope:"global", blurb:"Payment authentication, tokenization, and fraud-risk platform built with Visa, Mastercard, and NPCI token services; part of the PayU/Prosus group.", source:"https://wibmo.co/company/"},
+
+  {name:"AsiaVerify", country:"Singapore", subs:["kyc_kyb"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Onboarding platform offering KYB, KYC, and UBO (ultimate beneficial owner) verification for businesses across Asia-Pacific, covering Mainland China, Japan, India, Vietnam, Malaysia, Thailand, and Singapore.", source:"https://partner.visa.com/content/gpp/partner-directory/asiaverify.html"},
+  {name:"Endowus", country:"Singapore", subs:["robo"], tier:"nimble", scope:"regional", blurb:"Digital wealth platform managing private savings and CPF (Singapore's public pension) funds.", source:"https://fintechnews.sg/132643/payments/16-apac-companies-named-among-worlds-top-cross-border-payment-firms-of-2026/"},
+  {name:"XTransfer", country:"Singapore", subs:["collection"], tier:"nimble", scope:"global", blurb:"B2B cross-border trade payment platform, founded 2017.", source:"https://fintechnews.sg/132643/payments/16-apac-companies-named-among-worlds-top-cross-border-payment-firms-of-2026/"},
+  {name:"Nium", country:"Singapore", subs:["payouts","issue_cards"], visaPartner:true, tier:"nimble", scope:"global", blurb:"Real-time cross-border payments and card-issuing infrastructure; $1.4B valuation after a $50M Series E in June 2024.", source:"https://www.cnbc.com/2024/06/04/nium-cuts-valuation-by-30percent-in-funding-round-eyes-2025-ipo.html"},
+  {name:"Airwallex", country:"Singapore", subs:["orchestration","payouts","embed_banking"], tier:"established", scope:"global", blurb:"Global cross-border payments and card infrastructure provider; tripled its NYC headcount between 2024 and 2025 reflecting rising demand.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"MineSec", country:"Singapore", subs:["tap_to_phone"], visaPartner:true, tier:"nimble", scope:"global", blurb:"SoftPOS SDK and PCI MPoC-compliant mobile payment acceptance technology for banks and payment providers; a certified Visa partner with deployments spanning Asia and a joint venture for Latin America.", source:"https://partner.visa.com/site/partner-directory/minesec.html"},
+
+  {name:"Finsify (Money Lover)", country:"Vietnam", subs:["budgeting","wellness"], tier:"nimble", scope:"local", blurb:"Personal finance app that consolidates bank accounts so users can track and manage spending.", source:"https://www.tmasolutions.com/insights/top-fintech-companies-in-vietnam"},
+  {name:"Growth Wealth", country:"Vietnam", subs:["sme_loans"], tier:"nimble", scope:"local", blurb:"Peer-to-peer lending platform connecting Vietnamese SMEs with individual and institutional investors.", source:"https://www.tmasolutions.com/insights/top-fintech-companies-in-vietnam"},
+  {name:"MoMo", country:"Vietnam", subs:["budgeting"], tier:"established", scope:"local", blurb:"Vietnam's leading e-wallet and consumer super-app; one of the country's six tech unicorns.", source:"https://www.tmasolutions.com/insights/top-fintech-companies-in-vietnam"},
+
+  {name:"Alipay", country:"China", subs:["local_wallets"], tier:"established", scope:"global", blurb:"Ant Group's super-app wallet and QR checkout system, the dominant mobile payment method in China and widely accepted for inbound travelers.", source:"https://thefintechtimes.com/the-fintech-ecosystem-of-china-in-2026/"},
+  {name:"WeChat Pay", country:"China", subs:["local_wallets"], tier:"established", scope:"global", blurb:"Tencent's payments layer embedded inside the WeChat super-app, covering everyday consumer and merchant transactions across China.", source:"https://thefintechtimes.com/the-fintech-ecosystem-of-china-in-2026/"},
+
+  {name:"Computop", country:"Germany", subs:["checkout"], visaPartner:true, tier:"established", scope:"regional", blurb:"Bamberg-based omnichannel payment gateway (Computop Paygate) serving online, mobile, and in-store checkout for e-commerce, healthcare, and hospitality merchants; over 25 years independent, now part of Nexi Group.", source:"https://computop.com/en/about-us/the-company"},
+  {name:"DPS", country:"Germany", subs:["bnpl"], visaPartner:true, tier:"established", scope:"regional", blurb:"Full-service issuer processor (a Fiserv solution) offering virtual card issuance APIs that let BNPL lenders and card issuers launch merchant-agnostic instalment products; a live partner in Visa's BNPL partner program.", source:"https://www.pymnts.com/bnpl/2022/visa-partner-program-aims-to-fill-bnpl-capability-gaps-for-fintechs-banks/"},
+  {name:"Solaris", country:"Germany", subs:["embed_banking","issue_cards"], tier:"established", scope:"regional", blurb:"Banking-as-a-service platform letting companies embed accounts, payments, and cards under its German banking license.", source:"https://www.omnius.so/blog/leading-fintech-startups-germany"},
+  {name:"Pliant", country:"Germany", subs:["issue_cards"], tier:"nimble", scope:"regional", blurb:"Corporate credit card and spend-management platform for European businesses, built on its own card-issuing infrastructure.", source:"https://www.omnius.so/blog/leading-fintech-startups-germany"},
+  {name:"Mambu", country:"Germany", subs:["launch_bank"], tier:"established", scope:"global", blurb:"Cloud-native core banking engine used by banks and fintechs worldwide to launch and run lending and deposit products.", source:"https://www.omnius.so/blog/leading-fintech-startups-germany"},
+
+  {name:"Orient Corporation (Orico)", country:"Japan", subs:["issue_cards"], visaPartner:true, tier:"established", scope:"local", blurb:"Visa Ready BIN sponsor and Japan's leading card-issuing enabler, supporting card programmes for enterprises and fintechs (about 1,500 co-branded cards); affiliated with Mizuho Financial Group.", source:"https://www.orico.co.jp/en/company/corporate/business/creditcard/"},
+  {name:"Money Forward", country:"Japan", subs:["budgeting"], tier:"established", scope:"local", blurb:"Publicly listed personal and business finance platform combining account aggregation, budgeting, and accounting tools.", source:"https://techround.co.uk/startups/top-fintech-startups-in-japan/"},
+  {name:"Paidy", country:"Japan", subs:["bnpl"], tier:"established", scope:"local", blurb:"Buy-now-pay-later service for Japanese e-commerce, acquired by PayPal in 2021.", source:"https://techround.co.uk/startups/top-fintech-startups-in-japan/"},
+  {name:"Solid", country:"Japan", subs:["embed_banking"], tier:"nimble", scope:"local", blurb:"Banking and payments infrastructure tailored to Japanese businesses embedding financial services into their products.", source:"https://techround.co.uk/startups/top-fintech-startups-in-japan/"},
+
+  {name:"Thales", country:"France", subs:["tokenization"], visaPartner:true, tier:"established", scope:"global", blurb:"Publicly listed (Euronext Paris) digital security group whose EMV tokenization platform connects directly to Visa VTS and Mastercard MDES to secure card-on-file and in-app payments; a Visa partner since 2012, live in 50+ markets.", source:"https://www.thalesgroup.com/en/markets/digital-identity-and-security/banking-payment/digital-commerce/emv-tokenization"},
+  {name:"Qonto", country:"France", subs:["embed_banking"], tier:"established", scope:"regional", blurb:"Business finance and neobank platform for European SMEs and freelancers, covering accounts, cards, and bookkeeping.", source:"https://techround.co.uk/startups/the-top-10-fintech-startups-in-france-driving-the-future-of-finance/"},
+  {name:"Swan", country:"France", subs:["embed_banking"], tier:"nimble", scope:"regional", blurb:"Banking-as-a-service platform letting European companies embed IBAN accounts, cards, and payments into their own products without becoming a regulated bank themselves; processes over €1.5B in monthly transactions for 150+ clients.", source:"https://tech.eu/2025/01/30/embedded-fintech-swan-extends-series-b-with-42m/"},
+  {name:"Ledger", country:"France", subs:["crypto"], tier:"established", scope:"global", blurb:"Hardware wallet and crypto security platform, one of the most widely used self-custody tools worldwide.", source:"https://techround.co.uk/startups/the-top-10-fintech-startups-in-france-driving-the-future-of-finance/"},
+
+  {name:"Wallester", country:"Spain", subs:["issue_cards"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Estonia-licensed card-issuing and embedded-finance platform letting companies launch branded Visa card programmes without their own banking license, plus a corporate expense-management product; an official Visa partner since 2018.", source:"https://tech.eu/2026/03/11/estonia-leads-europe-in-fintech-growth-as-wallester-becomes-the-sector-s-fastest-growing-company/"},
+  {name:"Seglan", country:"Spain", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Madrid-based payment security specialist providing card-on-file tokenization, Click to Pay, and 3D Secure services, PCI-DSS and EMVCo certified; around 20 years in international payment and mobility markets.", source:"https://www.seglan.com/homepage/"},
+  {name:"SeQura", country:"Spain", subs:["bnpl"], tier:"established", scope:"regional", blurb:"Buy-now-pay-later and flexible checkout financing for Spanish and Portuguese e-commerce merchants; has raised over $400M to date.", source:"https://seedtable.com/best-fintech-startups-in-spain"},
+  {name:"Bit2Me", country:"Spain", subs:["crypto"], tier:"nimble", scope:"regional", blurb:"Spanish crypto exchange and on/off-ramp platform; raised a $53M round to expand across Europe.", source:"https://seedtable.com/best-fintech-startups-in-spain"},
+  {name:"Embat", country:"Spain", subs:["b2b_collections"], tier:"nimble", scope:"local", blurb:"Treasury-management software automating cash visibility, forecasting, and reconciliation for finance teams.", source:"https://seedtable.com/best-fintech-startups-in-spain"},
+
+  {name:"Galileo", country:"Mexico", subs:["issue_cards"], tier:"established", scope:"global", blurb:"Card-issuing and processing infrastructure (owned by SoFi Technologies) that powers digital banking products for fintechs including Mexico's Klar.", source:"https://tech.sofi.com/blog/galileo-welcomes-mexican-fintech-klar/"},
+  {name:"Evertec", country:"Mexico", subs:["issue_cards"], visaPartner:true, tier:"established", scope:"regional", blurb:"Publicly listed (NYSE: EVTC) transaction-processing company operating across 26 Latin American countries, offering merchant acquiring, card processing, and the ATH debit network; processes over 6 billion transactions a year.", source:"https://ir.evertecinc.com/home/default.aspx"},
+  {name:"Veritran", country:"Mexico", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Low-code digital banking platform (Argentina-founded, offices across Latin America including Mexico) offering tokenization, push payments, and Click to Pay; a Tier 1 Visa service provider processing 25 billion transactions a year for 50 bank clients.", source:"https://finovate.com/argentinas-veritran-earns-225-million-valuation-joins-finovates-largest-latin-american-cohort-to-date/"},
+  {name:"OmniPayments", country:"Mexico", subs:["tokenization"], tier:"nimble", scope:"regional", blurb:"Token Service Provider giving acquirers a platform to incorporate card tokenization into transactions across more than a dozen Latin American markets including Mexico.", source:"https://partner.visa.com/site/partner-directory/omnipayments-llc.html"},
+  {name:"Konfio", country:"Mexico", subs:["sme_loans"], tier:"established", scope:"local", blurb:"SME lending and business financial services platform, one of Mexico's most prominent fintechs.", source:"https://muralpay.com/blog/mexico-based-fintech-companies-that-are-transforming-finance"},
+  {name:"Belvo", country:"Mexico", subs:["open_banking"], tier:"nimble", scope:"regional", blurb:"Open banking and financial-data API connecting businesses to bank accounts across Mexico, Brazil, and Colombia for credit scoring, account verification, and payment initiation.", source:"https://www.businesswire.com/news/home/20251009802671/en/Mexico-Embedded-Finance-Databook-Report-2025-$18.34-Billion-Ecosystem-Expands-Beyond-Payments-to-Insurance-BaaS-and-Inclusion-Platforms-as-Regulation-and-Open-Banking-Spur-Innovation---ResearchAndMarkets.com"},
+  {name:"Monato", country:"Mexico", subs:["embed_banking"], tier:"nimble", scope:"local", blurb:"Modular financial infrastructure letting Mexican businesses embed accounts, payments, and cards into their own products.", source:"https://muralpay.com/blog/mexico-based-fintech-companies-that-are-transforming-finance"},
+
+  {name:"Akulaku", country:"Indonesia", subs:["bnpl"], tier:"established", scope:"regional", blurb:"Buy-now-pay-later and digital banking platform serving consumers across Indonesia and Southeast Asia.", source:"https://fintechnews.id/108845/funding/indonesias-most-well-funded-fintech-startups-in-2025/"},
+  {name:"Xendit", country:"Indonesia", subs:["checkout","orchestration"], tier:"established", scope:"regional", blurb:"Payment gateway and orchestration infrastructure processing payments for businesses across Indonesia and the Philippines.", source:"https://fintechnews.id/108845/funding/indonesias-most-well-funded-fintech-startups-in-2025/"},
+  {name:"Investree", country:"Indonesia", subs:["sme_loans"], tier:"nimble", scope:"local", blurb:"Peer-to-peer lending marketplace connecting Indonesian SMEs with individual and institutional lenders.", source:"https://fintechnews.id/108845/funding/indonesias-most-well-funded-fintech-startups-in-2025/"},
+
+  {name:"Adyen", country:"Netherlands", subs:["checkout","orchestration"], tier:"established", scope:"global", blurb:"Publicly listed global payments platform processing transactions for large merchants across online, in-store, and marketplace channels.", source:"https://tracxn.com/d/explore/fintech-startups-in-netherlands"},
+  {name:"Mollie", country:"Netherlands", subs:["checkout"], tier:"established", scope:"regional", blurb:"Payment service provider offering checkout and subscription billing tools for European SMEs.", source:"https://tracxn.com/d/explore/fintech-startups-in-netherlands"},
+  {name:"Bridgefund", country:"Netherlands", subs:["sme_loans"], tier:"nimble", scope:"local", blurb:"Revenue-based financing for online sellers, advancing working capital against future marketplace payouts.", source:"https://tracxn.com/d/explore/fintech-startups-in-netherlands"},
+
+  {name:"eMcREY", country:"Saudi Arabia", subs:["tap_to_phone"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"SoftPOS provider (offices across the Gulf, including Saudi Arabia) turning NFC Android devices into contactless terminals accepting Visa, Mastercard, Amex, and Saudi Arabia's MADA scheme; Visa Certified Vendor and Mastercard Platinum Digital Vendor.", source:"https://www.businesswire.com/news/home/20211212005038/en/Amadis-Chosen-by-eMcREY-for-SoftPos-Payment-Solution"},
+  {name:"HPS", country:"Saudi Arabia", subs:["tokenization"], visaPartner:true, tier:"established", scope:"global", blurb:"Morocco-founded (Casablanca) payments technology group holding a Visa principal membership license, offering BIN sponsorship and tokenization software to banks, fintechs, and processors in 90+ countries.", source:"https://www.hps-worldwide.com/about-hps"},
+  {name:"Tabby", country:"Saudi Arabia", subs:["bnpl"], tier:"established", scope:"regional", blurb:"Buy-now-pay-later platform used at checkout across Saudi Arabia and the wider Gulf region; valued at over $3B.", source:"https://fintechnews.ae/30624/saudi/6-saudi-fintech-startups-to-follow-in-2026/"},
+  {name:"Tamara", country:"Saudi Arabia", subs:["bnpl"], tier:"established", scope:"regional", blurb:"Buy-now-pay-later and shopping platform operating across Saudi Arabia, the UAE, and the wider Gulf.", source:"https://fintechnews.ae/30624/saudi/6-saudi-fintech-startups-to-follow-in-2026/"},
+  {name:"HALA", country:"Saudi Arabia", subs:["checkout"], tier:"nimble", scope:"local", blurb:"Payment and collection tools for Saudi merchants and small businesses; raised a $157M Series B.", source:"https://fintechnews.ae/30624/saudi/6-saudi-fintech-startups-to-follow-in-2026/"},
+
+  {name:"GCash (Mynt)", country:"Philippines", subs:["local_wallets","budgeting"], tier:"established", scope:"local", blurb:"The Philippines' leading e-wallet and super-app, covering payments, savings, insurance, and investing for millions of Filipinos.", source:"https://www.n90.asia/post/top-fintech-startups-in-the-philippines"},
+  {name:"Maya", country:"Philippines", subs:["local_wallets","bnpl"], tier:"established", scope:"local", blurb:"Digital wallet and digital bank offering payments, credit, and banking services, one of the country's licensed digital banks.", source:"https://www.n90.asia/post/top-fintech-startups-in-the-philippines"},
+  {name:"Netbank", country:"Philippines", subs:["launch_bank"], tier:"nimble", scope:"local", blurb:"Licensed bank offering Bank Accounts-as-a-Service via APIs, the first in the Philippines to do so, letting fintechs and digital platforms launch banking, card, and lending products under its license; raised a Series B led by Altara Ventures in April 2026.", source:"https://fintechnews.ph/71065/digital-banking-news-philippines/netbank-philippines-funding/"},
+
+  {name:"Curlec", country:"Malaysia", subs:["b2b_collections"], tier:"established", scope:"local", blurb:"Direct debit and recurring-payments API for Malaysian businesses, regulated by Bank Negara Malaysia and a PayNet member; acquired by Razorpay in 2022 and now operating as Razorpay Curlec.", source:"https://curlec.com/about/"},
+  {name:"Soft Space", country:"Malaysia", subs:["tap_to_phone"], visaPartner:true, tier:"nimble", scope:"global", blurb:"World-leading SoftPOS provider turning NFC smartphones into secure card terminals; a certified Visa Tap to Phone partner used by 30+ financial institutions across 10 countries.", source:"https://partner.visa.com/site/partner-directory/soft-space.html"},
+  {name:"Touch 'n Go eWallet", country:"Malaysia", subs:["local_wallets"], tier:"established", scope:"local", blurb:"Malaysia's widely used e-wallet, built on the country's Touch 'n Go toll and transit payment network.", source:"https://fintechnews.my/49867/funding/top-5-most-funded-fintechs-in-malaysia-for-2025/"},
+  {name:"ManagePay", country:"Malaysia", subs:["checkout"], tier:"nimble", scope:"local", blurb:"Payment gateway and mobile point-of-sale provider serving Malaysian SMEs and merchants.", source:"https://fintechnews.my/49867/funding/top-5-most-funded-fintechs-in-malaysia-for-2025/"},
+
+  {name:"TrueMoney (Ascend Money)", country:"Thailand", subs:["local_wallets"], tier:"established", scope:"regional", blurb:"E-wallet and financial services group operating across Thailand and Southeast Asia, backed by a virtual banking license bid.", source:"https://fintechnews.sg/blog/thailand-top-funded-fintechs-2025/"},
+  {name:"Omise", country:"Thailand", subs:["checkout"], tier:"established", scope:"regional", blurb:"Payment gateway processing online transactions for merchants across Thailand and neighboring markets.", source:"https://fintechnews.sg/blog/thailand-top-funded-fintechs-2025/"},
+  {name:"Roojai", country:"Thailand", subs:["standalone_insurance"], tier:"nimble", scope:"local", blurb:"Digital insurer selling motor and health policies direct to Thai consumers online.", source:"https://fintechnews.sg/blog/thailand-top-funded-fintechs-2025/"},
+];
+
+let selProblems = [];
+let expandedCats = new Set();
+let activeScope = "all";
+let activeTier = "all";
+let activeCountry = null;
+
+function subInfo(subId){
+  for(const cat of CATEGORIES){
+    const sub = cat.subs.find(s=>s.id===subId);
+    if(sub) return {label:sub.label, bg:cat.bg, fg:cat.fg, icon:cat.icon};
+  }
+  return null;
+}
+function tierIcon(t){ return t==="nimble" ? "ti-seedling" : "ti-building-skyscraper"; }
+function scopeIcon(s){ return s==="local"?"ti-map-pin":s==="regional"?"ti-map":s==="global"?"ti-world":"ti-apps"; }
+
+function matches(d){
+  const okP = selProblems.length===0 || selProblems.every(p=>d.subs.includes(p));
+  const okS = activeScope==="all" || d.scope===activeScope;
+  const okT = activeTier==="all" || d.tier===activeTier;
+  return okP && okS && okT;
+}
+
+function renderProblems(){
+  document.getElementById("problems").innerHTML = CATEGORIES.map(cat=>{
+    const expanded = expandedCats.has(cat.id);
+    const selCount = cat.subs.filter(s=>selProblems.includes(s.id)).length;
+    const body = expanded ? '<div class="problem-group-body"><div class="pillrow">'
+      + cat.subs.map(s=>{
+          const on = selProblems.includes(s.id);
+          return '<button class="pill" data-sub="'+s.id+'" style="'+(on?('background:'+cat.bg+';color:'+cat.fg+';border-color:'+cat.fg+';'):'')+'">'+s.label+'</button>';
+        }).join("")
+      + '</div></div>' : '';
+    return '<div class="problem-group'+(expanded?' expanded':'')+'">'
+      + '<button class="problem-group-header" data-catheader="'+cat.id+'"><i class="ti '+cat.icon+'"></i>'
+      + '<span class="glabel">'+cat.label+'</span>'
+      + (selCount>0 ? '<span class="gcount">'+selCount+' selected</span>' : '')
+      + '<i class="ti ti-chevron-down chevron"></i></button>'
+      + body
+      + '</div>';
+  }).join("");
+  document.getElementById("probCount").textContent = "("+selProblems.length+"/3)";
+  document.querySelectorAll("[data-catheader]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      const id = btn.dataset.catheader;
+      if(expandedCats.has(id)){ expandedCats.delete(id); } else { expandedCats.add(id); }
+      renderProblems();
+    });
+  });
+  document.querySelectorAll("[data-sub]").forEach(btn=>{
+    btn.addEventListener("click", (e)=>{
+      e.stopPropagation();
+      const id = btn.dataset.sub;
+      if(selProblems.includes(id)){ selProblems = selProblems.filter(p=>p!==id); }
+      else { if(selProblems.length>=3) selProblems.shift(); selProblems.push(id); }
+      renderProblems(); renderAll();
+    });
+  });
+}
+
+function renderScope(){
+  const scopes=[{id:"all",label:"Any"},{id:"local",label:"Local specialist"},{id:"regional",label:"Regional player"},{id:"global",label:"Global / multi-region"}];
+  document.getElementById("scope").innerHTML = scopes.map(s=>{
+    const on = activeScope===s.id;
+    return '<button class="pill" data-scope="'+s.id+'" style="'+(on?'background:var(--navy-bg);color:var(--navy);border-color:var(--navy);':'')+'"><i class="ti '+scopeIcon(s.id)+'"></i>'+s.label+'</button>';
+  }).join("");
+  document.querySelectorAll("[data-scope]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      activeScope = btn.dataset.scope;
+      renderScope(); renderAll();
+    });
+  });
+}
+
+function renderTier(){
+  const tiers=[{id:"all",label:"Any",icon:"ti-apps"},{id:"nimble",label:"Nimble",icon:"ti-seedling"},{id:"established",label:"Established",icon:"ti-building-skyscraper"}];
+  document.getElementById("tier").innerHTML = tiers.map(t=>{
+    const on = activeTier===t.id;
+    return '<button class="pill" data-tier="'+t.id+'" style="'+(on?'background:var(--navy-bg);color:var(--navy);border-color:var(--navy);':'')+'"><i class="ti '+t.icon+'"></i>'+t.label+'</button>';
+  }).join("");
+  document.querySelectorAll("[data-tier]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      activeTier = btn.dataset.tier;
+      renderTier(); renderAll();
+    });
+  });
+}
+
+function renderRegions(byCountry){
+  const el = document.getElementById("regions");
+  const byRegion = {};
+  Object.keys(byCountry).forEach(country=>{
+    const region = REGION_OF[country];
+    byRegion[region] = byRegion[region] || [];
+    byRegion[region].push(country);
+  });
+  const regions = REGION_ORDER.filter(r=>byRegion[r]);
+
+  el.innerHTML = regions.length ? regions.map(r=>{
+    const countries = byRegion[r].sort();
+    return '<div class="region-block"><div class="region-title"><i class="ti ti-map-pin"></i>'+r+'</div><div class="country-grid">'
+      + countries.map(country=>{
+          const info = byCountry[country];
+          const active = activeCountry===country;
+          return '<button class="country-tile'+(active?' active':'')+'" data-country="'+country+'">'
+            + '<div class="name">'+country+'</div>'
+            + '<div class="count">'+info.total+' match'+(info.total>1?'es':'')+' &middot; '+info.nimble+' nimble, '+info.established+' established</div>'
+            + '</button>';
+        }).join("")
+      + '</div></div>';
+  }).join("") : '<p class="empty">No matches for this combination in the current draft.</p>';
+
+  el.querySelectorAll("[data-country]").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+      activeCountry = activeCountry===btn.dataset.country ? null : btn.dataset.country;
+      renderAll();
+    });
+  });
+}
+
+function renderAll(){
+  const filtered = DATA.filter(matches);
+  const byCountry = {};
+  filtered.forEach(d=>{
+    byCountry[d.country] = byCountry[d.country] || {total:0, nimble:0, established:0};
+    byCountry[d.country].total++;
+    byCountry[d.country][d.tier]++;
+  });
+
+  renderRegions(byCountry);
+
+  const infoEl = document.getElementById("selectedInfo");
+  const cardsEl = document.getElementById("cards");
+  if(!activeCountry || !byCountry[activeCountry]){
+    infoEl.innerHTML = '';
+    cardsEl.innerHTML = Object.keys(byCountry).length ? '<p class="empty">Select a market above to see matching fintechs.</p>' : '<p class="empty">No matches for this combination in the current draft.</p>';
+    return;
+  }
+  const info = byCountry[activeCountry];
+  infoEl.innerHTML = '<i class="ti ti-map-pin" style="color:var(--accent);"></i> <strong>'+activeCountry+'</strong> <span class="tier-mini">&middot; '+info.total+' match'+(info.total>1?'es':'')+' ('+info.nimble+' nimble, '+info.established+' established)</span>';
+
+  const toShow = filtered.filter(d=>d.country===activeCountry);
+  cardsEl.innerHTML = toShow.map(d=>{
+    const tierBg = d.tier==="nimble" ? "var(--nimble-bg)" : "var(--established-bg)";
+    const tierFg = d.tier==="nimble" ? "var(--nimble-fg)" : "var(--established-fg)";
+    return '<div class="card">'
+      + '<div class="card-top"><span class="card-name">'+d.name+'</span><span class="card-scope"><i class="ti '+scopeIcon(d.scope)+'"></i>'+d.scope+'</span></div>'
+      + '<div class="tags"><span class="tier-badge" style="background:'+tierBg+';color:'+tierFg+';"><i class="ti '+tierIcon(d.tier)+'"></i>'+d.tier+'</span>'
+      + (d.visaPartner ? '<span class="visa-badge" title="Sourced from Visa\'s public partner directory webpage: partner.visa.com/site/partner-directory.html"><i class="ti ti-badge-check"></i>Visa Partner Directory</span>' : '')
+      + d.subs.map(subId=>{ const s=subInfo(subId); return '<span class="badge" style="background:'+s.bg+';color:'+s.fg+';"><i class="ti '+s.icon+'"></i>'+s.label+'</span>'; }).join("")
+      + '</div>'
+      + '<p class="card-blurb">'+d.blurb+'</p>'
+      + '<div class="card-source"><a href="'+d.source+'" target="_blank" rel="noopener">Source <i class="ti ti-external-link" style="font-size:11px;"></i></a></div>'
+      + '</div>';
+  }).join("");
+}
+
+document.getElementById("themeToggle").addEventListener("click", ()=>{
+  const html = document.documentElement;
+  const isDark = html.getAttribute("data-theme")==="dark";
+  html.setAttribute("data-theme", isDark ? "light" : "dark");
+  document.getElementById("themeToggle").innerHTML = isDark ? '<i class="ti ti-moon"></i>' : '<i class="ti ti-sun"></i>';
+});
+
+renderProblems();
+renderScope();
+renderTier();
+renderAll();
+</script>
+</body>
+</html>
