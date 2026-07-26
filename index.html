@@ -21,39 +21,42 @@
 <meta name="twitter:description" content="Find fintech partners by problem, market, and company size. 115 companies, 20 markets, 28 specific problems.">
 <meta name="twitter:image" content="https://mariale-pod.github.io/fintech-partner-finder/maria-headshot.jpg">
 
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%234b3bd6'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4b48'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
   :root{
-    --bg:#fafafa; --card:#ffffff; --border:#e6e6ea; --text:#111114; --text2:#5c5c66; --muted:#96969f;
-    --navy:#4b3bd6; --navy-bg:#ecebff; --accent:#4b3bd6;
-    --nimble-bg:#e6f4ea; --nimble-fg:#1e6b3a;
-    --established-bg:#eceef3; --established-fg:#3b4560;
+    --bg:#F7F5EF; --card:#FFFFFF; --border:#E1DCCC; --text:#1E1C18; --text2:#5A564C; --muted:#95907F;
+    --navy:#1F4B48; --navy-bg:#E4EEEC; --accent:#1F4B48;
+    --nimble-bg:#EAF1DF; --nimble-fg:#3C5A1E;
+    --established-bg:#EDEAE0; --established-fg:#5B5540;
   }
   html[data-theme="dark"]{
-    --bg:#0e0e12; --card:#18181f; --border:#2b2b35; --text:#f2f2f5; --text2:#b3b3bf; --muted:#6f6f7a;
-    --navy:#a89bff; --navy-bg:#231f45; --accent:#a89bff;
-    --nimble-bg:#12301f; --nimble-fg:#6fd695;
-    --established-bg:#242536; --established-fg:#aeb7cc;
+    --bg:#15181A; --card:#1D2224; --border:#2E3436; --text:#F1EEE6; --text2:#B7B2A4; --muted:#736F63;
+    --navy:#7FC7BE; --navy-bg:#1E3634; --accent:#7FC7BE;
+    --nimble-bg:#233318; --nimble-fg:#9AC46E;
+    --established-bg:#2B2A22; --established-fg:#C7C0A6;
   }
   *{box-sizing:border-box;}
   body{margin:0; background:var(--bg); color:var(--text); font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .2s ease, color .2s ease;}
-  .hero{background:var(--card); border-bottom:1px solid var(--border); padding:2.25rem 1.5rem 2rem; position:relative;}
+  .mono{font-family:'IBM Plex Mono', monospace;}
+  .hero{background:var(--card); border-bottom:1px solid var(--border); padding:2.5rem 1.5rem 2.1rem; position:relative;}
   .hero-inner{max-width:960px; margin:0 auto; position:relative;}
   .theme-toggle{position:absolute; top:0; right:1.5rem; background:var(--bg); border:1px solid var(--border); color:var(--text); width:38px; height:38px; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:17px; transition:background .12s ease;}
   .theme-toggle:hover{border-color:var(--navy);}
+  .eyebrow{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); display:flex; align-items:center; gap:9px; margin-bottom:16px;}
+  .eyebrow::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--navy); box-shadow:0 0 0 3px var(--navy-bg); flex-shrink:0;}
   .brand-row{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
   .brand-mark{width:42px; height:42px; border-radius:12px; background:var(--navy-bg); color:var(--navy); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:20px; flex-shrink:0;}
-  .hero h1{font-size:26px; font-weight:600; margin:0; letter-spacing:-.01em; color:var(--text);}
+  .hero h1{font-family:'Fraunces', serif; font-weight:500; font-size:29px; margin:0; letter-spacing:-.01em; color:var(--text);}
   .hero p{font-size:15px; color:var(--text2); margin:0 0 18px; max-width:60ch;}
   .stats-row{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
   .stat-chip{display:inline-flex; align-items:center; gap:7px; background:var(--bg); border:1px solid var(--border); color:var(--text2); padding:8px 15px; border-radius:20px; font-size:13px;}
   .stat-chip i{font-size:15px; color:var(--navy);}
-  .stat-chip strong{font-size:15px; color:var(--text);}
+  .stat-chip strong{font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--text);}
   .coverage-note{font-size:12.5px; color:var(--muted);}
   .wrap{max-width:960px; margin:0 auto; padding:1.75rem 1.5rem 4rem;}
   .author-box{display:flex; align-items:center; flex-wrap:wrap; gap:8px; font-size:12.5px; color:var(--text2); background:var(--navy-bg); border:1px solid var(--border); border-radius:10px; padding:10px 16px; margin-bottom:1.4rem;}
@@ -63,8 +66,8 @@
   .author-sep{color:var(--muted);}
   .author-disclaimer{color:var(--text2);}
   .markets-hint{font-size:12px; color:var(--muted); margin:0 0 14px;}
-  .panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(20,48,79,.04);}
-  .panel h2{font-size:13px; font-weight:700; margin:0 0 10px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy);}
+  .panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(30,30,20,.03);}
+  .panel h2{font-family:'IBM Plex Mono', monospace; font-size:12px; font-weight:600; margin:0 0 10px; text-transform:uppercase; letter-spacing:.08em; color:var(--navy);}
   .panel p{font-size:14px; color:var(--text2); margin:0 0 10px;}
   .panel p:last-child{margin-bottom:0;}
   label.field-label{font-size:13px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:6px; margin-bottom:9px;}
@@ -78,42 +81,48 @@
   .problem-group-header{width:100%; display:flex; align-items:center; gap:8px; padding:10px 14px; background:var(--card); border:none; cursor:pointer; font-family:inherit; text-align:left; color:var(--text);}
   .problem-group-header:hover{background:var(--bg);}
   .problem-group-header .glabel{font-size:13px; font-weight:600; flex:1;}
-  .problem-group-header .gcount{font-size:11px; font-weight:700; color:var(--navy); background:var(--navy-bg); padding:2px 8px; border-radius:10px;}
+  .problem-group-header .gcount{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; color:var(--navy); background:var(--navy-bg); padding:2px 8px; border-radius:10px;}
   .problem-group-header .chevron{font-size:16px; color:var(--muted); transition:transform .15s ease;}
   .problem-group.expanded .chevron{transform:rotate(180deg);}
   .problem-group-body{padding:12px 14px 14px; border-top:1px solid var(--border);}
   .filter-grid{display:grid; grid-template-columns:1fr; gap:20px;}
   @media(min-width:640px){ .filter-grid.two{grid-template-columns:1fr 1fr;} }
 
-  .markets-panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(20,48,79,.04);}
+  .markets-panel{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:1.4rem 1.6rem; margin-bottom:1.4rem; box-shadow:0 1px 2px rgba(30,30,20,.03);}
+  .market-select{display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; background:var(--bg); border:1px solid var(--border); color:var(--text); font-family:inherit; font-size:14px; font-weight:600; padding:13px 16px; border-radius:10px; cursor:pointer; transition:border-color .12s ease;}
+  .market-select:hover{border-color:var(--accent);}
+  .market-select i{color:var(--muted); font-size:16px; transition:transform .15s ease; flex-shrink:0;}
+  .market-select.open i{transform:rotate(180deg);}
+  .market-select .placeholder{color:var(--text2); font-weight:500;}
+  .market-dropdown{margin-top:12px; border:1px solid var(--border); border-radius:10px; padding:16px; background:var(--bg); max-height:360px; overflow-y:auto;}
+  .market-dropdown[hidden]{display:none;}
   .region-block{margin-bottom:16px;}
   .region-block:last-child{margin-bottom:0;}
-  .region-title{font-size:12px; font-weight:700; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.06em; display:flex; align-items:center; gap:6px;}
+  .region-title{font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:600; color:var(--muted); margin-bottom:10px; text-transform:uppercase; letter-spacing:.08em; display:flex; align-items:center; gap:6px;}
   .country-grid{display:flex; gap:8px; flex-wrap:wrap;}
-  .country-tile{padding:11px 16px; border-radius:10px; border:1px solid var(--border); background:var(--bg); color:var(--text); cursor:pointer; text-align:left; min-width:150px; transition:all .12s ease; font-family:inherit;}
+  .country-tile{padding:11px 16px; border-radius:10px; border:1px solid var(--border); background:var(--card); color:var(--text); cursor:pointer; text-align:left; min-width:150px; transition:all .12s ease; font-family:inherit;}
   .country-tile:hover{border-color:var(--accent);}
   .country-tile .name{font-size:14px; font-weight:600; display:flex; align-items:center; gap:6px;}
-  .country-tile .count{font-size:11.5px; color:var(--muted); margin-top:3px;}
+  .country-tile .count{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted); margin-top:3px;}
   .country-tile.active{border-color:var(--accent); background:var(--navy-bg);}
   .country-tile.active .name{color:var(--accent);}
 
-  .selected-info{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--text2); margin:0 0 1rem;}
-  .selected-info strong{color:var(--text); font-size:15px;}
-  .selected-info .tier-mini{font-size:11.5px; color:var(--muted);}
+  .selected-info{display:flex; align-items:center; gap:8px; font-size:13.5px; color:var(--text2); margin:1.2rem 0 1rem;}
+  .selected-info strong{font-family:'Fraunces', serif; color:var(--text); font-size:17px; font-weight:500;}
+  .selected-info .tier-mini{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--muted);}
 
   .cards{display:grid; grid-template-columns:1fr; gap:12px;}
   @media(min-width:640px){ .cards{grid-template-columns:1fr 1fr;} }
-  .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 2px rgba(20,48,79,.04);}
-  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:8px;}
-  .card-name{font-size:15.5px; font-weight:700;}
+  .card{background:var(--card); border:1px solid var(--border); border-radius:14px; padding:16px 20px; box-shadow:0 1px 2px rgba(30,30,20,.03);}
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:8px; margin-bottom:6px;}
+  .card-name{font-family:'Fraunces', serif; font-size:16.5px; font-weight:600;}
+  .card-meta{font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; display:flex; align-items:center; gap:5px; margin-bottom:10px;}
   .tags{display:flex; gap:5px; flex-wrap:wrap; margin-bottom:8px;}
-  .badge{font-size:11px; font-weight:600; padding:3px 10px 3px 8px; border-radius:6px; display:inline-flex; align-items:center; gap:4px; white-space:nowrap;}
-  .badge i{font-size:12px;}
-  .tier-badge{font-size:10.5px; font-weight:700; padding:3px 9px 3px 7px; border-radius:6px; text-transform:uppercase; letter-spacing:.03em; display:inline-flex; align-items:center; gap:4px;}
-  .visa-badge{font-size:10.5px; font-weight:600; padding:2px 8px 2px 6px; border-radius:6px; display:inline-flex; align-items:center; gap:4px; border:1px solid var(--border); color:var(--text2); background:transparent;}
-  .card-scope{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.03em; white-space:nowrap; padding-top:2px; display:flex; align-items:center; gap:4px;}
+  .badge{font-size:11px; font-weight:500; padding:3px 9px 3px 7px; border-radius:6px; display:inline-flex; align-items:center; gap:4px; white-space:nowrap; background:var(--bg); border:1px solid var(--border); color:var(--text2);}
+  .badge i{font-size:12px; color:var(--muted);}
+  .tier-badge{font-family:'IBM Plex Mono', monospace; font-size:10px; font-weight:600; padding:3px 9px 3px 7px; border-radius:6px; text-transform:uppercase; letter-spacing:.04em; display:inline-flex; align-items:center; gap:4px; flex-shrink:0;}
   .card-blurb{font-size:13.5px; color:var(--text2); margin:8px 0;}
-  .card-source a{font-size:12px; color:var(--accent); text-decoration:none; font-weight:600;}
+  .card-source a{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--accent); text-decoration:none; font-weight:500; letter-spacing:.02em;}
   .card-source a:hover{text-decoration:underline;}
   .empty{font-size:13.5px; color:var(--muted); text-align:center; padding:1rem 0;}
   footer{margin-top:2.5rem; border-top:1px solid var(--border); padding-top:1.25rem; font-size:12.5px; color:var(--muted);}
@@ -128,6 +137,7 @@
 <div class="hero">
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="ti ti-moon"></i></button>
   <div class="hero-inner">
+    <div class="eyebrow">Independent research &middot; updated July 25, 2026</div>
     <div class="brand-row">
       <div class="brand-mark"><i class="ti ti-compass"></i></div>
       <h1>Fintech partner finder</h1>
@@ -157,6 +167,7 @@
     <p><strong>Company size</strong> is shown as a badge, not a filter default: <strong>nimble</strong> means privately held, generally founded within the last ~15 years, and either an estimated valuation under roughly $2 billion or a headcount under roughly 1,500 where valuation isn't public. <strong>Established</strong> means it exceeds one of those, is publicly listed, or is a widely recognized market leader in its category. This is directional judgment against available public data, not a precise financial threshold.</p>
     <p><strong>Partner scope:</strong> local (one primary market), regional (a handful of neighboring markets), global (broad multi-region presence). Selecting more than one problem shows only fintechs that address all of the selected problems together, not just any one of them.</p>
     <p><strong>Scope:</strong> this directory excludes the small set of companies synonymous with payments globally (Visa, Mastercard, PayPal, Stripe). All other fintechs are eligible for inclusion, regardless of size or listing status, provided they solve a specific problem rather than serve as general-purpose payments infrastructure most readers already know.</p>
+    <p><strong>Process:</strong> Research was gathered and organized with AI assistance to work at this scale. The problem taxonomy, tier judgments, and inclusion decisions are the author's own, checked against each entry's cited source.</p>
   </div>
 
   <div class="filters">
@@ -178,8 +189,14 @@
 
   <div class="markets-panel">
     <label class="field-label" style="margin-bottom:6px;"><i class="ti ti-building-store"></i> Markets</label>
-    <p class="markets-hint">Select a market below to display its matching fintechs.</p>
-    <div id="regions"></div>
+    <p class="markets-hint">Open the dropdown to pick a market and see its matching fintechs.</p>
+    <button type="button" class="market-select" id="marketTrigger" aria-expanded="false">
+      <span id="marketTriggerLabel" class="placeholder">Select a market&hellip;</span>
+      <i class="ti ti-chevron-down"></i>
+    </button>
+    <div class="market-dropdown" id="marketDropdown" hidden>
+      <div id="regions"></div>
+    </div>
   </div>
 
   <div id="selectedInfo" class="selected-info"></div>
@@ -505,8 +522,15 @@ function renderRegions(byCountry){
     btn.addEventListener("click", ()=>{
       activeCountry = activeCountry===btn.dataset.country ? null : btn.dataset.country;
       renderAll();
+      closeMarketDropdown();
     });
   });
+}
+
+function closeMarketDropdown(){
+  document.getElementById("marketDropdown").setAttribute("hidden","");
+  document.getElementById("marketTrigger").classList.remove("open");
+  document.getElementById("marketTrigger").setAttribute("aria-expanded","false");
 }
 
 function renderAll(){
@@ -520,11 +544,22 @@ function renderAll(){
 
   renderRegions(byCountry);
 
+  const triggerLabel = document.getElementById("marketTriggerLabel");
+  const marketCount = Object.keys(byCountry).length;
+  if(activeCountry && byCountry[activeCountry]){
+    const ci = byCountry[activeCountry];
+    triggerLabel.classList.remove("placeholder");
+    triggerLabel.innerHTML = '<i class="ti ti-map-pin" style="color:var(--navy); margin-right:5px;"></i>'+activeCountry+' <span class="mono" style="color:var(--muted); font-weight:500; font-size:12px;">&middot; '+ci.total+' match'+(ci.total>1?'es':'')+'</span>';
+  } else {
+    triggerLabel.classList.add("placeholder");
+    triggerLabel.textContent = marketCount ? 'Select a market ('+marketCount+' available)…' : 'No markets match this combination';
+  }
+
   const infoEl = document.getElementById("selectedInfo");
   const cardsEl = document.getElementById("cards");
   if(!activeCountry || !byCountry[activeCountry]){
     infoEl.innerHTML = '';
-    cardsEl.innerHTML = Object.keys(byCountry).length ? '<p class="empty">Select a market above to see matching fintechs.</p>' : '<p class="empty">No matches for this combination in the current draft.</p>';
+    cardsEl.innerHTML = marketCount ? '<p class="empty">Open the market dropdown above to see matching fintechs.</p>' : '<p class="empty">No matches for this combination in the current draft.</p>';
     return;
   }
   const info = byCountry[activeCountry];
@@ -534,11 +569,13 @@ function renderAll(){
   cardsEl.innerHTML = toShow.map(d=>{
     const tierBg = d.tier==="nimble" ? "var(--nimble-bg)" : "var(--established-bg)";
     const tierFg = d.tier==="nimble" ? "var(--nimble-fg)" : "var(--established-fg)";
+    const metaBits = [d.scope.charAt(0).toUpperCase()+d.scope.slice(1)+' partner'];
+    if(d.visaPartner) metaBits.push('Visa Partner Directory');
     return '<div class="card">'
-      + '<div class="card-top"><span class="card-name">'+d.name+'</span><span class="card-scope"><i class="ti '+scopeIcon(d.scope)+'"></i>'+d.scope+'</span></div>'
-      + '<div class="tags"><span class="tier-badge" style="background:'+tierBg+';color:'+tierFg+';"><i class="ti '+tierIcon(d.tier)+'"></i>'+d.tier+'</span>'
-      + (d.visaPartner ? '<span class="visa-badge" title="Sourced from Visa\'s public partner directory webpage: partner.visa.com/site/partner-directory.html"><i class="ti ti-badge-check"></i>Visa Partner Directory</span>' : '')
-      + d.subs.map(subId=>{ const s=subInfo(subId); return '<span class="badge" style="background:'+s.bg+';color:'+s.fg+';"><i class="ti '+s.icon+'"></i>'+s.label+'</span>'; }).join("")
+      + '<div class="card-top"><span class="card-name">'+d.name+'</span><span class="tier-badge" style="background:'+tierBg+';color:'+tierFg+';"><i class="ti '+tierIcon(d.tier)+'"></i>'+d.tier+'</span></div>'
+      + '<div class="card-meta"><i class="ti '+scopeIcon(d.scope)+'"></i>'+metaBits.join(' &middot; ')+'</div>'
+      + '<div class="tags">'
+      + d.subs.map(subId=>{ const s=subInfo(subId); return '<span class="badge"><i class="ti '+s.icon+'"></i>'+s.label+'</span>'; }).join("")
       + '</div>'
       + '<p class="card-blurb">'+d.blurb+'</p>'
       + '<div class="card-source"><a href="'+d.source+'" target="_blank" rel="noopener">Source <i class="ti ti-external-link" style="font-size:11px;"></i></a></div>'
@@ -551,6 +588,19 @@ document.getElementById("themeToggle").addEventListener("click", ()=>{
   const isDark = html.getAttribute("data-theme")==="dark";
   html.setAttribute("data-theme", isDark ? "light" : "dark");
   document.getElementById("themeToggle").innerHTML = isDark ? '<i class="ti ti-moon"></i>' : '<i class="ti ti-sun"></i>';
+});
+
+document.getElementById("marketTrigger").addEventListener("click", ()=>{
+  const trigger = document.getElementById("marketTrigger");
+  const dropdown = document.getElementById("marketDropdown");
+  const isHidden = dropdown.hasAttribute("hidden");
+  if(isHidden){
+    dropdown.removeAttribute("hidden");
+    trigger.classList.add("open");
+    trigger.setAttribute("aria-expanded","true");
+  } else {
+    closeMarketDropdown();
+  }
 });
 
 renderProblems();
