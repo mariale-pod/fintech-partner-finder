@@ -4,21 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fintech Partner Finder: Find fintechs to partner with, by problem and market</title>
-<meta name="description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size, spanning 187 companies across 20 markets and 30 specific problems, sourced from public information.">
+<meta name="description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size, spanning 200 companies across 20 markets and 30 specific problems, sourced from public information.">
 <meta name="author" content="Maria Ale. Peralta Giraldo">
 <meta name="robots" content="index, follow">
 
 <!-- Open Graph / LinkedIn preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Fintech Partner Finder: Find fintechs to partner with, by problem and market">
-<meta property="og:description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size, spanning 187 companies across 20 markets and 30 specific problems.">
+<meta property="og:description" content="An independent discovery tool for finding fintech partners by the specific problem to solve, market, and company size, spanning 200 companies across 20 markets and 30 specific problems.">
 <meta property="og:url" content="https://mariale-pod.github.io/fintech-partner-finder/">
 <meta property="og:image" content="https://mariale-pod.github.io/fintech-partner-finder/maria-headshot.jpg">
 
 <!-- Twitter/X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Fintech Partner Finder">
-<meta name="twitter:description" content="Find fintech partners by problem, market, and company size. 187 companies, 20 markets, 30 specific problems.">
+<meta name="twitter:description" content="Find fintech partners by problem, market, and company size. 200 companies, 20 markets, 30 specific problems.">
 <meta name="twitter:image" content="https://mariale-pod.github.io/fintech-partner-finder/maria-headshot.jpg">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4b48'/%3E%3Ctext x='32' y='43' font-family='Arial,Helvetica,sans-serif' font-size='30' font-weight='700' fill='white' text-anchor='middle'%3EF%3C/text%3E%3C/svg%3E">
@@ -148,18 +148,18 @@
 <div class="hero">
   <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"><i class="ti ti-moon"></i></button>
   <div class="hero-inner">
-    <div class="eyebrow">Independent research &middot; updated August 3, 2026</div>
+    <div class="eyebrow">Independent research &middot; updated August 5, 2026</div>
     <div class="brand-row">
       <div class="brand-mark"><i class="ti ti-compass"></i></div>
       <h1>Fintech partner finder</h1>
     </div>
-    <p>An independent personal research project designed to help users explore fintech companies by problem to solve, partner type, and market. The content is compiled from publicly available information for general discovery purposes only and does not represent the views, positions, or endorsements. No confidential or proprietary information is included.</p>
+    <p>A discovery tool for finding fintechs to partner with, organized by the specific problem to solve, partner type, and market, covering both nimble players and established, large-scale ones.</p>
     <div class="stats-row">
-      <span class="stat-chip"><i class="ti ti-building-store"></i><strong>187</strong>&nbsp;fintechs</span>
+      <span class="stat-chip"><i class="ti ti-building-store"></i><strong>200</strong>&nbsp;fintechs</span>
       <span class="stat-chip"><i class="ti ti-world"></i><strong>20</strong>&nbsp;markets</span>
       <span class="stat-chip"><i class="ti ti-list-details"></i><strong>30</strong>&nbsp;specific problems</span>
     </div>
-    <span class="coverage-note">Covers all 20 target markets. Depth per market will keep growing. Last updated August 3, 2026.</span>
+    <span class="coverage-note">Covers all 20 target markets. Depth per market will keep growing. Last updated August 5, 2026.</span>
   </div>
 </div>
 
@@ -216,7 +216,7 @@
   </details>
 
   <footer>
-    <p id="full-disclaimer"><strong>Disclaimer:</strong> This website is an independent personal research project created in my personal capacity and not on behalf of Visa. It is based on publicly available information as of August 3, 2026 and is provided for general discovery purposes only. It does not represent Visa's views, positions, business decisions, or endorsements. References to any company, including companies listed in public partner directories, are included for informational purposes only and do not imply endorsement, affiliation, partnership, or commercial relationship. No Visa confidential or proprietary information is included.</p>
+    <p id="full-disclaimer"><strong>Disclaimer:</strong> This website is an independent personal research project created in my personal capacity and not on behalf of Visa. It is based on publicly available information as of August 5, 2026 and is provided for general discovery purposes only. It does not represent Visa's views, positions, business decisions, or endorsements. References to any company, including companies listed in public partner directories, are included for informational purposes only and do not imply endorsement, affiliation, partnership, or commercial relationship. No Visa confidential or proprietary information is included.</p>
     <p style="margin-top:8px; font-size:11.5px;">Where a company appears in <a href="https://partner.visa.com/site/partner-directory.html" target="_blank" rel="noopener">Visa's public partner directory webpage</a>, that is noted on its card as "Visa Partner Directory," sourced entirely from that public page. Fintech companies change stage, ownership, and valuation quickly, so verify current status directly with the company before engaging.</p>
     <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
       <a class="feedback-btn" href="mailto:marialejandraperalta@gmail.com?subject=Fintech%20finder%20-%20suggested%20correction&amp;body=Fintech%20name%3A%0D%0A%0D%0ASuggested%20correction%20or%20addition%3A%0D%0A%0D%0ASource%20%28link%29%3A%0D%0A"><i class="ti ti-mail"></i>Suggest a correction by email</a>
@@ -250,8 +250,7 @@ const CATEGORIES = [
   {id:"lending", label:"Lending and credit", icon:"ti-cash", bg:"#FAEEDA", fg:"#633806", subs:[
     {id:"bnpl", label:"Offer buy-now-pay-later at checkout"},
     {id:"sme_loans", label:"Provide SME or working-capital loans"},
-    {id:"embedded_credit", label:"Embed consumer credit into a product"},
-    {id:"underwriting", label:"Automate credit scoring and underwriting"}
+    {id:"embedded_credit", label:"Embed consumer credit into a product"}
   ]},
   {id:"crossborder", label:"Money movement", icon:"ti-arrows-exchange", bg:"#F1EFE8", fg:"#444441", subs:[
     {id:"remittances", label:"Send international remittances"},
@@ -275,6 +274,9 @@ const CATEGORIES = [
     {id:"stablecoin_issuance", label:"Issue a regulated fiat-backed stablecoin"},
     {id:"stablecoin_custody", label:"Custody digital assets institutionally"},
     {id:"stablecoin_settlement", label:"Settle payments over stablecoin rails"}
+  ]},
+  {id:"agentic", label:"Agentic commerce", icon:"ti-robot", bg:"#FAECE7", fg:"#712B13", subs:[
+    {id:"agent_enablers", label:"Enable AI agents to transact (agent enablers)"}
   ]}
 ];
 
@@ -291,7 +293,7 @@ const REGION_ORDER = ["Americas","Europe","Middle East","Africa","Asia-Pacific"]
 const DATA = [
   {name:"KinPOS", country:"United States", subs:["tokenization"], visaPartner:true, tier:"nimble", scope:"regional", blurb:"Miami-based omnichannel payment software provider whose TES module offers cloud tokenization for banks and correspondent banking services, with a strong custom POS presence across Latin America.", source:"https://kinpos.com/us/en/__trashed-3/"},
   {name:"Entrust", country:"United States", subs:["tokenization","kyc_kyb"], visaPartner:true, tier:"established", scope:"global", blurb:"Digital card and payment tokenization platform certified across Visa VTS and Mastercard MDES, securing card-on-file and Click to Pay checkout; acquired AI-powered identity verification leader Onfido in 2024, and was named a Leader in Gartner's inaugural Magic Quadrant for Identity Verification.", source:"https://www.businesswire.com/news/home/20240409800662/en/Entrust-Completes-Acquisition-of-Onfido-Creating-A-New-Era-of-Identity-Centric-Security"},
-  {name:"Method", country:"United States", subs:["underwriting"], tier:"nimble", scope:"regional", blurb:"API giving lenders and fintechs real-time access to consumer liability data for debt repayment and balance transfers. Austin-based, founded 2021, raised a $41.5M Series B in January 2025.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
+  {name:"Method", country:"United States", subs:["open_banking"], tier:"nimble", scope:"regional", blurb:"API giving lenders and fintechs real-time access to consumer liability data for debt repayment and balance transfers. Austin-based, founded 2021, raised a $41.5M Series B in January 2025.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
   {name:"Lithic", country:"United States", subs:["issue_cards"], tier:"nimble", scope:"regional", blurb:"Card-issuing APIs that let companies launch and manage their own card programs.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
   {name:"Upflow", country:"United States", subs:["b2b_collections"], tier:"nimble", scope:"regional", blurb:"B2B accounts-receivable and cash-collection software for finance teams.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
   {name:"Mercury", country:"United States", subs:["open_banking"], tier:"established", scope:"local", blurb:"Business banking platform reshaping how startups and small businesses handle money.", source:"https://www.omnius.so/blog/leading-us-fintech-startups"},
@@ -508,6 +510,20 @@ const DATA = [
   {name:"Mamo", country:"United Arab Emirates", subs:["spend_mgmt","b2b_collections"], tier:"nimble", scope:"local", blurb:"Dubai-based payments platform offering corporate cards, payment links, and expense management for SMEs; raised a $3.4M round in 2024 (4DX Ventures, Dubai Future District Fund) on top of earlier rounds, roughly $12.9M total, expanding into Saudi Arabia.", source:"https://fintech.global/2024/07/25/uae-fintech-firm-mamo-secures-3-4m-in-latest-funding-round/"},
   {name:"Beehive", country:"United Arab Emirates", subs:["sme_loans"], tier:"established", scope:"regional", blurb:"Dubai-based peer-to-peer SME lending platform, MENA's first regulated by the DFSA, Sharia-compliant, with over AED 2B funded to SMEs since launch; acquired by telecom group e& enterprise in 2023, operating across the UAE, Oman, and Saudi Arabia.", source:"https://www.prnewswire.com/ae/news-releases/revolutionizing-alternative-lending-beehives-technological-advancement-302008748.html"},
   {name:"Stake", country:"United Arab Emirates", subs:["investing"], tier:"nimble", scope:"local", blurb:"Dubai-based fractional real-estate investing platform with 2M+ users across 211+ nationalities and 250,000+ investments in 500+ properties; raised a $31M Series B in 2026 led by Emirates NBD with Mubadala and Property Finder participating, over $381M in transactions to date.", source:"https://techcrunch.com/2024/06/10/stake-raises-14m-to-bring-its-fractional-property-investment-platform-to-saudi-arabia-abu-dhabi"},
+
+  {name:"Skyfire", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"San Francisco-based payment network and identity layer (Know Your Agent) for autonomous AI agents to transact with each other and with services; $8.5M seed round backed by Coinbase Ventures, Circle, Ripple, and Brevan Howard Digital, exited beta in March 2025 with an enterprise-ready network.", source:"https://venturebeat.com/ai/skyfire-launches-to-let-autonomous-ai-agents-spend-money-on-your-behalf"},
+  {name:"Catena Labs", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"Boston-based \"AI-native financial institution\" for agents, founded by Circle co-founder Sean Neville; raised a $30M Series A in May 2026 (Acrew Capital, a16z crypto) on top of an $18M seed, $48M total, and has filed for a national trust bank charter with the OCC.", source:"https://fortune.com/2026/05/20/catena-labs-series-a-sean-neville-ai-native-bank/"},
+  {name:"Natural", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"San Francisco-based payments infrastructure letting AI agents hold funds, move money, make purchases, and collect payments across banking networks; raised a $30M Series A led by Forerunner Ventures in July 2026, $40M+ total, positioning against Stripe.", source:"https://techcrunch.com/2026/07/20/natural-raises-30m-to-reinvent-payments-for-ai-agents-and-take-on-stripe/"},
+  {name:"Crossmint", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"Miami-based programmable wallet, stablecoin, and agentic-finance API platform letting agents securely hold funds, trade assets, and purchase goods; $23.6M raised led by Ribbit Capital, and its GOAT SDK is the most-downloaded open-source library for connecting AI agents to blockchain protocols.", source:"https://blog.crossmint.com/crossmint-raises-23-6m-led-by-ribbit-capital/"},
+  {name:"Payman AI", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"regional", blurb:"Durango, CO-based platform letting AI agents execute real banking transactions (ACH, transfers, payouts) via voice or text on existing bank rails, including the first AI-agent-initiated ACH transaction in early 2025; $13.8M raised, backed by Visa Ventures and Coinbase Ventures.", source:"https://paymanai.com/"},
+  {name:"Paid AI", country:"United Kingdom", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"London-based monetization and billing infrastructure for AI agents, shifting from subscription and per-seat pricing to outcome-based billing for agent work; founded by Manny Medina, raised €10M pre-seed (EQT, Sequoia) plus a £15.7M seed led by Lightspeed, $33.3M total.", source:"https://techcrunch.com/2025/09/28/paid-the-ai-agent-results-based-billing-startup-from-manny-medina-raises-huge-21m-seed"},
+  {name:"Santander", country:"Spain", subs:["agent_enablers"], tier:"established", scope:"global", blurb:"Madrid-based global bank that completed Europe's first live end-to-end payment executed entirely by an AI agent in March 2026 using Mastercard Agent Pay, processed through its own regulated live payments infrastructure — the first agentic payment carried out within a regulated banking framework.", source:"https://www.santander.com/en/press-room/press-releases/2026/03/santander-and-mastercard-complete-europes-first-live-end-to-end-payment-executed-by-an-ai-agent"},
+  {name:"Nekuda", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"New York-based agent identity and payments SDK (Secure Agent Wallet and Agentic Mandates) giving AI agents authenticated, authorized payment credentials with built-in guardrails and compliance; $5M seed led by Madrona with Amex Ventures and Visa Ventures, May 2025, and an early pilot partner in Visa's Intelligent Commerce program.", source:"https://www.businesswire.com/news/home/20250514808097/en/Nekuda-Raises-$5M-Led-by-Madrona-Together-with-Amex-Ventures-and-Visa-Ventures-to-Power-Agentic-Payments"},
+  {name:"Basis Theory", country:"United States", subs:["agent_enablers","tokenization"], tier:"nimble", scope:"global", blurb:"Mill Valley, CA-based PCI-compliant payment data vault letting merchants tokenize and control card data independently of any processor; raised a $33M Series B led by Costanoa in October 2025 ($50M total) and leads the 20+ member Agentic Commerce Consortium (with Lithic, Skyfire, Rye, Crossmint, and others) setting standards for merchant-controlled AI commerce.", source:"https://blog.basistheory.com/series-b-announcement"},
+  {name:"Rye", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"San Jose, CA-based Universal Checkout API using AI-powered browser automation to complete checkout autonomously at any merchant online, without merchant integration; founded 2021 (pivoted from web3), $14M seed led by a16z crypto, positioned as the checkout-execution layer of the agentic commerce stack.", source:"https://rye.com/blog/agentic-commerce-startups"},
+  {name:"PayOS", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"San Francisco-based card-native payments infrastructure for AI agents, founded 2023; partners with both Mastercard (Agentic Tokens) and Visa Intelligent Commerce, performed a live agentic token transaction with Mastercard in September 2025, and was the processing partner in Santander and Mastercard's March 2026 \"Europe's first live end-to-end AI agent payment.\"", source:"https://payos.ai/blog/payos-launch"},
+  {name:"Lithic", country:"United States", subs:["agent_enablers","issue_cards"], tier:"nimble", scope:"regional", blurb:"New York-based card issuing platform (formerly Privacy.com) letting businesses spin up programmable virtual cards, including per-merchant or per-session cards for AI agents; $121M raised, an $800M valuation as of its Series C, and listed in Visa's public partner directory.", source:"https://partner.visa.com/site/partner-directory/lithic.html"},
+  {name:"Channel3", country:"United States", subs:["agent_enablers"], tier:"nimble", scope:"global", blurb:"New York-based Y Combinator company building a real-time, universal product graph so AI agents can discover and buy any product on the web even when merchants describe items inconsistently; 50M+ products catalogued, $6M seed led by Matrix Partners in December 2025, and a founding member of the Agentic Commerce Consortium.", source:"https://trychannel3.com/blog/channel3-raises-6m"},
 
 ];
 
